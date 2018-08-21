@@ -1,0 +1,21 @@
+name "derelict-utf8proc"
+description "Dynamic and static binding to the utf8proc library."
+homepage "https://github.com/Vild/DerelictUTF8Proc"
+authors "Dan Printzell"
+license "MIT"
+targetPath "lib"
+targetName "DerelictUTF8Proc"
+
+/* This is needed even when compiling the static binding,
+   as some modules require derelict.util.system on the import path */
+
+configuration "derelict-utf8proc-dynamic" {
+	excludedSourceFiles "source/derelict/utf8proc/internal/*_static.d"
+	dependency "derelict-util" version="~>3.0.0-beta.1"
+}
+
+configuration "derelict-utf8proc-static" {
+	excludedSourceFiles "source/derelict/utf8proc/internal/*_dyn*.d"
+	versions "DerelictUTF8Proc_Static"
+	libs "libutf8proc"
+}
