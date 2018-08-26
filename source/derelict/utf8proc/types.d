@@ -121,7 +121,7 @@ struct utf8proc_property_struct
 {
 	import std.bitmanip : bitfields;
 
-align(4):
+align(1):
 	/**
    * Unicode category.
    * @see utf8proc_category_t.
@@ -153,9 +153,10 @@ align(4):
 		bool, "control_boundary", 1,
 		uint, "charwidth", 2,
 		uint, "pad", 2,
-		uint, "boundclass", 8,
 	));
 	// dfmt on
+
+	ubyte boundclass;
 }
 
 /** Unicode categories. */
